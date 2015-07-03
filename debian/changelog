@@ -1,0 +1,17 @@
+securityonion-tcpudpflow (001-0ubuntu0securityonion2) precise; urgency=low
+
+  * securityonion-tcpudpflow: remove connection_state_remove event handler #761 
+
+ -- Doug Burks <doug.burks@gmail.com>  Fri, 03 Jul 2015 15:48:56 -0400
+
+securityonion-tcpudpflow (001-0ubuntu0securityonion1) precise; urgency=low
+
+  * Script updates.
+
+ -- Scott Allen Runnels <srunnels@gmail.com>  Wed, 03 Jul 2013 11:43:42 -0400
+
+securityonion-tcpudpflow (001-0ubuntu0securityonion0) precise; urgency=low
+
+  * Initial release 
+
+ -- Scott Allen Runnels <srunnels@gmail.com>  Wed, 03 Jul 2013 10:40:50 -0400

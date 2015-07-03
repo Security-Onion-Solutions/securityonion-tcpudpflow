@@ -1,0 +1,70 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ securityonion-tcpudpflow (001-0ubuntu0securityonion2) precise; urgency=low
+ .
+   * securityonion-tcpudpflow: remove connection_state_remove event handler #761
+Author: Doug Burks <doug.burks@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- securityonion-tcpudpflow-001.orig/TCPUDPFlow.bro
++++ securityonion-tcpudpflow-001/TCPUDPFlow.bro
+@@ -28,24 +28,32 @@ event http_request(c: connection, method
+     print fmt("%s.%d-%s.%d: %s %s", c$id$orig_h, c$id$orig_p, c$id$resp_h, c$id$resp_p, method, original_URI);
+ 	}
+ 
+- event connection_state_remove(c: connection)
+- 	{
+-    print c;
+-     if (c?$dns)
+-         print c$dns;
+- 	}
+-
+ event udp_contents(u: connection, is_orig: bool, contents: string)
+ 	{
+     if (is_orig)
+         {
+-        print fmt("%s.%d-%s.%d:", u$id$orig_h, u$id$orig_p, u$id$resp_h, u$id$resp_p);
++        print fmt("%s.%d-%s.%d: %s", u$id$orig_h, u$id$orig_p, u$id$resp_h, u$id$resp_p, "Bro UDP output from SRC:");
+         }
+     else
+         {
+-        print fmt("%s.%d-%s.%d:", u$id$resp_h, u$id$resp_p, u$id$orig_h, u$id$orig_p);
++        print fmt("%s.%d-%s.%d: %s", u$id$resp_h, u$id$resp_p, u$id$orig_h, u$id$orig_p, "Bro UDP output from DST:");
+         }
+-    print fmt("%s",contents);
++    	print fmt("%s",contents);
++	print "";
+ 	}
+ 
++event dns_end(c: connection, msg: dns_msg)
++        {
++        if ( c?$dns && c$dns$saw_reply && c$dns$saw_query )
++                {
++        	print fmt("%s.%d-%s.%d: %s", c$id$orig_h, c$id$orig_p, c$id$resp_h, c$id$resp_p, "Bro DNS analyzer output:");
++		print "";
++                print c$dns;
++                }
++        }
+ 
++#event connection_state_remove(c: connection)
++# 	{
++#     if (c?$dns)
++#         print c$dns;
++# 	}
