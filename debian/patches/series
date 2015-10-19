@@ -2,3 +2,4 @@ script_update_01
 securityonion-tcpudpflow:-remove-connection_state_remove-event-handler-#761
 create-github-repo
 fix-formatting
+Issue-811:-securityonion-tcpudpflow:-add-SMTP-and-RDP-support

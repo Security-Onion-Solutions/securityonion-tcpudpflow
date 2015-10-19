@@ -1,3 +1,9 @@
+securityonion-tcpudpflow (001-0ubuntu0securityonion5) trusty; urgency=medium
+
+  * Issue 811: securityonion-tcpudpflow: add SMTP and RDP support 
+
+ -- Doug Burks <doug.burks@gmail.com>  Mon, 19 Oct 2015 10:49:51 -0400
+
 securityonion-tcpudpflow (001-0ubuntu0securityonion4) trusty; urgency=medium
 
   * rebuild for trusty 
