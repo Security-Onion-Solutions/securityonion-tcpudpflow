@@ -11,5 +11,5 @@ Homepage: http://securityonion.blogspot.com
 Package: securityonion-tcpudpflow
 Architecture: all
 Depends: ${misc:Depends}, securityonion-bro
-Description: Default script to provide better transcripts for oguil.
+Description: Default script to provide better transcripts for Sguil.
  Bro in all the places!

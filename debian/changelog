@@ -1,3 +1,9 @@
+securityonion-tcpudpflow (001-0ubuntu0securityonion6) trusty; urgency=medium
+
+  * fix typo in control file 
+
+ -- Doug Burks <doug.burks@gmail.com>  Thu, 10 Dec 2015 15:32:01 -0500
+
 securityonion-tcpudpflow (001-0ubuntu0securityonion5) trusty; urgency=medium
 
   * Issue 811: securityonion-tcpudpflow: add SMTP and RDP support 
